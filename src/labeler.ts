@@ -114,7 +114,7 @@ async function fetchContent(
   repoPath: string
 ): Promise<string> {
   if (!fs.existsSync(repoPath)) {
-    return Promise.resolve(fs.readFileSync(repoPath, 'utf8'));
+    throw Error('labeler.yml file not found')
   }
   const response: any = await client.rest.repos.getContent({
     owner: github.context.repo.owner,

@@ -14019,7 +14019,7 @@ function getLabelGlobs(client, configurationPath) {
 function fetchContent(client, repoPath) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!fs.existsSync(repoPath)) {
-            return Promise.resolve(fs.readFileSync(repoPath, 'utf8'));
+            throw Error('labeler.yml file not found');
         }
         const response = yield client.rest.repos.getContent({
             owner: github.context.repo.owner,
